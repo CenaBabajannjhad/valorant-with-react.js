@@ -8,7 +8,7 @@ import IntroSlidesTitle from "./components/IntroSlidesTitle";
 import Slide from "./components/Slide";
 import Title from "./components/Title";
 import Image from "./components/Image";
-import Loading from "./components/Loading";
+// import Loading from "./components/Loading";
 // img
 import logoTwo from "./assets/images/icons/logo-2.png";
 // api
