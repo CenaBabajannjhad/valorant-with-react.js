@@ -223,5 +223,6 @@ li:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--description-color);
   height: 100vh;
 }
