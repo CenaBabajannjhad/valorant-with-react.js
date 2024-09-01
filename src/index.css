@@ -218,3 +218,10 @@ li:hover {
   background-color: var(--description-color);
   border: 1px solid var(--white);
 }
+
+.loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
