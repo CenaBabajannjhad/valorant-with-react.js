@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import react from "react";
+// hooks
+import useFetch from './Hooks/useFetch'
 // components
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -11,37 +13,17 @@ import Image from "./components/Image";
 import Loading from "./components/Loading";
 // img
 import logoTwo from "./assets/images/icons/logo-2.png";
-// api
-const API = "https://valorant-api.com/v1/agents";
+
+
 
 function App() {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  // fetch data
-  useEffect(() => {
-    async function getData() {
-      try {
-        const res = await fetch(API);
-        if (res.ok) {
-          // if response eq with ok 200 299
-          const json = await res.json();
-          setData(json.data);
-          setIsLoading(true);
-        } else {
-          // else throw a new error with response status
-          throw new Error(res.status);
-        }
-      } catch (err) {
-        console.err(err);
-      }
-    }
-    getData();
-  }, []);
+  const {data , isLoading} = useFetch("https://valorant-api.com/v1/agents");
 
   return (
     <>
       {isLoading ? (
+          <Loading />
+      ) : (
         <>
           <Header />
           <Main>
@@ -57,7 +39,7 @@ function App() {
                   />
                 </IntroSlidesTitle>
 
-                {data.map((item, index) => {
+                {data && data.map((item, index) => {
                   return (
                     item.fullPortraitV2 !== null && (
                       <Slide
@@ -73,8 +55,6 @@ function App() {
             </HeroSection>
           </Main>
         </>
-      ) : (
-        <Loading />
       )}
     </>
   );
